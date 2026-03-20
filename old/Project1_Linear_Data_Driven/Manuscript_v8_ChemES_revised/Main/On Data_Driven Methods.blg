@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: On Data_Driven Methods.aux
+The style file: elsarticle-num-names.bst
+Database file #1: library.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 38 entries,
+            2918 wiz_defined-function locations,
+            928 strings with 12887 characters,
+and the built_in function-call counts, 25578 in all, are:
+= -- 1982
+> -- 1003
+< -- 16
++ -- 375
+- -- 336
+* -- 3120
+:= -- 3650
+add.period$ -- 74
+call.type$ -- 38
+change.case$ -- 300
+chr.to.int$ -- 37
+cite$ -- 38
+duplicate$ -- 1851
+empty$ -- 1846
+format.name$ -- 452
+if$ -- 4740
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 376
+newline$ -- 201
+num.names$ -- 152
+pop$ -- 575
+preamble$ -- 1
+purify$ -- 302
+quote$ -- 0
+skip$ -- 412
+stack$ -- 0
+substring$ -- 1223
+swap$ -- 1423
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 336
+warning$ -- 0
+while$ -- 173
+width$ -- 0
+write$ -- 542

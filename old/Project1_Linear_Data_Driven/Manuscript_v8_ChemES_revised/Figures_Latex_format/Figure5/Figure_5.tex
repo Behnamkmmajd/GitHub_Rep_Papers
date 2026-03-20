@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}  % tweak margins as you like
+\usepackage{graphicx}
+\usepackage{subcaption}              % only for arranging panels (no sub-captions used)
+\pagestyle{empty}
+%\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+\usepackage[numbers]{natbib}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsmath package provides various useful equation environments.
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{mathptmx,mathtools}
+\usepackage{subcaption}
+\usepackage{float} % Add this in your preamble
+\usepackage[export]{adjustbox}
+\usepackage{array} % Needed for m{} column type
+
+
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+\usepackage{graphicx}   % For including images
+\usepackage{tikz}       % For drawing arrows
+\usepackage{xcolor}     % For coloring
+\usepackage{lineno}
+\renewcommand\linenumberfont{\normalfont\bfseries\small} % <-- Increase line number size
+
+\begin{document}
+
+\setcounter{figure}{4}
+
+
+	\begin{figure}[!tpbh]
+	\centering
+	% First subfigure
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5a.eps}
+		\put(-245,242){\large\textbf{(a)}}
+	\end{subfigure}
+	\vspace{0.2cm}
+	% Second subfigure
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5b.eps}
+		\put(-245,242){\large\textbf{(b)}}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5c.eps}
+		\put(-245,242){\large\textbf{(c)}}
+	\end{subfigure}
+	\vspace{0.2cm}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5d.eps}
+		\put(-245,242){\large\textbf{(d)}}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5e.eps}
+		\put(-245,242){\large\textbf{(e)}}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.26,trim={0.5cm 0.5cm 2cm 1.8cm},clip]{Figure5f.eps}
+		\put(-245,242){\large\textbf{(f)}}
+	\end{subfigure}
+	\caption{Rise velocity (Left) and circularity (Right) approximated using 10 modes for the rising bubble case (a-b) C$_1$, (c-d) C$_2$, and (e-f) C$_3$. The same number of modes is used for the velocity and gas volume fraction fields.}
+	\label{Fig5}
+\end{figure} 
+
+\end{document}

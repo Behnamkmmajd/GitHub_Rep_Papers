@@ -1,0 +1,66 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}  % tweak margins as you like
+\usepackage{graphicx}
+\usepackage{subcaption}              % only for arranging panels (no sub-captions used)
+\pagestyle{empty}
+%\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+\usepackage[numbers]{natbib}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsmath package provides various useful equation environments.
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{mathptmx,mathtools}
+\usepackage{subcaption}
+\usepackage{float} % Add this in your preamble
+\usepackage[export]{adjustbox}
+\usepackage{array} % Needed for m{} column type
+
+
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+\usepackage{graphicx}   % For including images
+\usepackage{tikz}       % For drawing arrows
+\usepackage{xcolor}     % For coloring
+\usepackage{lineno}
+\renewcommand\linenumberfont{\normalfont\bfseries\small} % <-- Increase line number size
+
+\begin{document}
+
+\setcounter{figure}{3}
+
+	\begin{figure}[p]
+	\begin{center}
+		
+		% First subfigure
+		\begin{subfigure}[t]{\textwidth}
+			\hspace{2cm}
+			\includegraphics[scale=0.28,trim={8cm 2.0cm 1cm 2.1cm},clip]{Figure4a.eps}
+			\put(-480,110){\large\textbf{(a)}}
+			\put(-441,235){\textbf{E-DMD}}
+			\put(-370,235){\textbf{E-POD}}
+			\put(-300,235){\textbf{L-DMD}}
+			\put(-227,235){\textbf{L-POD}}
+			\put(-160,235){\textbf{ME-DMD}}
+			\put(-95,235){\textbf{ME-POD}}
+		\end{subfigure}
+		% Second subfigure
+		\begin{subfigure}[t]{\textwidth}
+			\hspace{2cm}
+			\includegraphics[scale=0.28,trim={8cm 2.0cm 1cm 2.2cm},clip]{Figure4b.eps}
+			\put(-480,110){\large\textbf{(b)}}
+		\end{subfigure}
+		\begin{subfigure}[t]{\textwidth}
+			\hspace{2cm}
+			\includegraphics[scale=0.28,trim={8cm 2.0cm 1cm 2.1cm},clip]{Figure4c.eps}
+			\put(-480,110){\large\textbf{(c)}}
+		\end{subfigure}
+	\end{center}
+	\caption{Bubble deformation using 10 modes for cases a) C$_1$, b) C$_2$, and c) C$_3$. Results are mirrored about $Z=0$ and shown at $\tau = 0.07,~3.36,~4.65,~9.94,~13.22,~16.51,~19.80,~23.09$. For clarity, each snapshot is offset by $0.025D$ in the axial direction. Yellow solid and red dashed lines denote reconstructed and DNS iso-contours of the gas volume fraction 0.5, respectively.}
+	\label{Fig4}
+\end{figure}
+
+\end{document}

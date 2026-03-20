@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}  % tweak margins as you like
+\usepackage{graphicx}
+\usepackage{subcaption}              % only for arranging panels (no sub-captions used)
+\pagestyle{empty}
+%\usepackage[numbers]{natbib}
+%\usepackage[authoryear]{natbib}
+\usepackage[numbers]{natbib}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsmath package provides various useful equation environments.
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{mathptmx,mathtools}
+\usepackage{subcaption}
+\usepackage{float} % Add this in your preamble
+\usepackage[export]{adjustbox}
+\usepackage{array} % Needed for m{} column type
+
+
+\usepackage{amsmath}
+\usepackage{nicefrac}
+\usepackage{dirtytalk}
+\usepackage{graphicx}   % For including images
+\usepackage{tikz}       % For drawing arrows
+\usepackage{xcolor}     % For coloring
+\usepackage{lineno}
+\renewcommand\linenumberfont{\normalfont\bfseries\small} % <-- Increase line number size
+
+
+
+\begin{document}
+\setcounter{figure}{2}
+
+	\begin{figure}[!tbp]
+	\centering
+	% First subfigure
+	\begin{subfigure}[t]{0.9\textwidth}
+		\centering
+		\includegraphics[scale=0.38,trim={0.8cm 0cm 2.1cm 1.8cm},clip]{Figure3a.eps}
+		\put(-410,350){\huge\textbf{(a)}}
+	\end{subfigure}
+	\hfill
+	% Second subfigure
+	\begin{subfigure}[t]{0.9\textwidth}
+		\centering
+		\includegraphics[scale=0.38,trim={0.85cm 0cm 2.1cm 1.8cm},clip]{Figure3b.eps}
+		\put(-410,350){\huge\textbf{(b)}}
+	\end{subfigure}
+	\caption{Relative reconstruction error for the velocity and gas volume fraction fields in Eulerian, Lagrangian, and \textcolor{blue}{Moving-Eulerian} frameworks for the rising bubble a) case C$_1$ and b) case C$_3$. Red, blue, and green colors correspond to the Eulerian, Lagrangian, and \textcolor{blue}{Moving-Eulerian} frameworks, while the dashed and solid lines refer to DMD and POD techniques, respectively. Squares and triangles denote the gas volume fraction and velocity fields.}
+	\label{Fig3}
+\end{figure}
+
+\end{document}
