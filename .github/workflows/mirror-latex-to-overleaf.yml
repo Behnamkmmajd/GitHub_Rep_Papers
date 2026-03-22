@@ -41,6 +41,19 @@ jobs:
             exit 1
           fi
 
+          if [ ! -d "$SOURCE_PREFIX" ]; then
+            echo "Source folder '$SOURCE_PREFIX' does not exist in this checkout." >&2
+            exit 1
+          fi
+
+      - name: Validate access to mirror repository
+        run: |
+          if ! git ls-remote "https://x-access-token:${PUSH_TOKEN}@github.com/${TARGET_REPO}.git" >/dev/null 2>&1; then
+            echo "Cannot access target repository '${TARGET_REPO}'." >&2
+            echo "Check that OVERLEAF_MIRROR_REPO is correct and OVERLEAF_MIRROR_TOKEN has Contents read/write on that repo." >&2
+            exit 1
+          fi
+
       - name: Configure git identity
         run: |
           git config user.name "github-actions[bot]"
