@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - project1_linear_datadriven/Latex/**
+      - Project2_LCS/Latex/**
       - .github/workflows/mirror-latex-to-overleaf.yml
   workflow_dispatch:
 
@@ -16,7 +17,8 @@ jobs:
   mirror-latex:
     runs-on: ubuntu-latest
     env:
-      SOURCE_PREFIX: project1_linear_datadriven/Latex
+      PROJECT1_SOURCE: project1_linear_datadriven/Latex
+      PROJECT2_SOURCE: Project2_LCS/Latex
       TARGET_BRANCH: ${{ vars.OVERLEAF_MIRROR_BRANCH || 'main' }}
       TARGET_REPO: ${{ vars.OVERLEAF_MIRROR_REPO }}
       PUSH_TOKEN: ${{ secrets.OVERLEAF_MIRROR_TOKEN }}
@@ -42,8 +44,13 @@ jobs:
             exit 1
           fi
 
-          if [ ! -d "$SOURCE_PREFIX" ]; then
-            echo "Source folder '$SOURCE_PREFIX' does not exist in this checkout." >&2
+          if [ ! -d "$PROJECT1_SOURCE" ]; then
+            echo "Source folder '$PROJECT1_SOURCE' does not exist in this checkout." >&2
+            exit 1
+          fi
+
+          if [ ! -d "$PROJECT2_SOURCE" ]; then
+            echo "Source folder '$PROJECT2_SOURCE' does not exist in this checkout." >&2
             exit 1
           fi
 
@@ -60,14 +67,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Split LaTeX subtree
-        id: split
+      - name: Build export repository
         run: |
-          split_sha=$(git subtree split --prefix="$SOURCE_PREFIX")
-          echo "split_sha=$split_sha" >> "$GITHUB_OUTPUT"
+          rm -rf overleaf-export
+          mkdir -p overleaf-export/Project1 overleaf-export/Project2
 
-      - name: Push subtree to mirror repository
+          rsync -a --delete "$PROJECT1_SOURCE/" overleaf-export/Project1/
+          rsync -a --delete "$PROJECT2_SOURCE/" overleaf-export/Project2/
+
+          cd overleaf-export
+          git init
+          git checkout -b "$TARGET_BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Mirror LaTeX projects from ${GITHUB_REPOSITORY}@${GITHUB_SHA}"
+
+      - name: Push export to mirror repository
         run: |
+          cd overleaf-export
           git push --force \
             "https://x-access-token:${PUSH_TOKEN}@github.com/${TARGET_REPO}.git" \
-            "${{ steps.split.outputs.split_sha }}:refs/heads/${TARGET_BRANCH}"
+            "${TARGET_BRANCH}:refs/heads/${TARGET_BRANCH}"

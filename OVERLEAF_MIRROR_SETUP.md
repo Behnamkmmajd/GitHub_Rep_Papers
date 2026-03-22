@@ -1,10 +1,11 @@
 # Overleaf Mirror Setup
 
-This repository includes an automated GitHub Actions mirror for the LaTeX paper only.
+This repository includes an automated GitHub Actions mirror for the paper folders only.
 
-Source folder mirrored:
+Source folders mirrored into the Overleaf repository root:
 
-- project1_linear_datadriven/Latex
+- Project1/ from project1_linear_datadriven/Latex
+- Project2/ from Project2_LCS/Latex
 
 The workflow file is:
 
@@ -21,9 +22,9 @@ Setup required on GitHub:
 
 Behavior:
 
-- Every push to main that changes project1_linear_datadriven/Latex triggers the workflow.
-- The workflow extracts only that folder with git subtree split.
-- It then force-pushes the extracted history to the target repository branch.
+- Every push to main that changes either source LaTeX folder triggers the workflow.
+- The workflow assembles a clean export repository containing Project1/ and Project2/ as top-level folders.
+- It then force-pushes that assembled export to the target repository branch.
 
 Notes:
 
