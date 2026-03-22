@@ -1,0 +1,59 @@
+name: Mirror LaTeX To Overleaf Repo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - project1_linear_datadriven/Latex/**
+      - .github/workflows/mirror-latex-to-overleaf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror-latex:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_PREFIX: project1_linear_datadriven/Latex
+      TARGET_BRANCH: ${{ vars.OVERLEAF_MIRROR_BRANCH || 'main' }}
+      TARGET_REPO: ${{ vars.OVERLEAF_MIRROR_REPO }}
+      PUSH_TOKEN: ${{ secrets.OVERLEAF_MIRROR_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate mirror configuration
+        run: |
+          if [ -z "$TARGET_REPO" ]; then
+            echo "Missing repository variable OVERLEAF_MIRROR_REPO." >&2
+            echo "Set it to something like Behnamkmmajd/paper-overleaf." >&2
+            exit 1
+          fi
+
+          if [ -z "$PUSH_TOKEN" ]; then
+            echo "Missing secret OVERLEAF_MIRROR_TOKEN." >&2
+            echo "Create a fine-grained PAT with Contents: Read and write on the target repo." >&2
+            exit 1
+          fi
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Split LaTeX subtree
+        id: split
+        run: |
+          split_sha=$(git subtree split --prefix="$SOURCE_PREFIX")
+          echo "split_sha=$split_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Push subtree to mirror repository
+        run: |
+          git push --force \
+            "https://x-access-token:${PUSH_TOKEN}@github.com/${TARGET_REPO}.git" \
+            "${{ steps.split.outputs.split_sha }}:refs/heads/${TARGET_BRANCH}"
