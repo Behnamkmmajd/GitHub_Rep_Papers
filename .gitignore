@@ -1,0 +1,11 @@
+# --- Large files 
+**/Results/
+**/database/
+**/databasenew/
+**/databaseold/
+**/old_results/
+**/archive/
+**/database_raw/
+**/big_archive_messy/
+**/runs/
+**/results/

@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Fortran with MPI",
+      "type": "shell",
+      "command": "mpifort",
+      "args": [
+        "-g",                                                                   // Add this flag to enable debugging symbols
+        "-I/usr/include",                                                       // Path for FFTW
+        "-I/usr/include/hdf5/openmpi",                                          // Path to HDF5 includes
+        "-I/usr/local/include/fortran_stdlib/GNU-11.4.0",                       // Correct path to stdlib .mod files
+        "-J${workspaceFolder}/Module",                                          // Specify the directory where .mod files will be placed
+        "${workspaceFolder}/Module/Sparity.f95",                                // Path to your module file
+        "${file}",                                                              // The current file to be compiled
+        "-o", "${fileBasenameNoExtension}",                                     // Output file with the same name as the source without the extension
+        "-llapack", "-lblas", "-lfftw3", "-lhdf5_fortran", "-lhdf5",            // Required libraries
+        "-L/usr/lib/x86_64-linux-gnu",                                          // Path to BLAS/LAPACK libraries
+        "-L/usr/lib/x86_64-linux-gnu/hdf5/openmpi",                             // Path to HDF5 libraries
+        "-L/usr/local/lib",                                                     // Path to Fortran stdlib library
+        "-lfortran_stdlib"                                                      // Link Fortran stdlib library
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Build Fortran with MPI"
+    }
+  ]
+}
