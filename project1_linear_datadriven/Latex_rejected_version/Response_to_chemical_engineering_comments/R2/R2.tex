@@ -1,0 +1,67 @@
+\documentclass[a4paper]{article}
+\usepackage{color,epsfig}
+\usepackage{makecell}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{afterpage}
+\usepackage{mdframed}
+\usepackage{listings}
+\usepackage{dirtytalk}
+\newcommand{\pdif}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\oline}[1]{ \overline{#1}}
+\definecolor{Olivegreen}{rgb}{0,.4,0}
+\renewcommand{\lstlistingname}{\bfseries\textcolor{black}{Table}}% Listing -> Algorithm
+
+\begin{document}
+
+{\Large \bf {Response to Referee 1}}
+\vspace{1cm}
+
+{\textcolor{Olivegreen}{
+We appreciate the constructive critique from the reviewer. We have carefully examined all the concerns and here are the answers to them. We believe these changes have improved the quality of the manuscript.
+}}
+
+
+\begin{enumerate}
+%.................................................................
+\item
+\textit{Although the concept of research is worthwhile, the present work does not include any experimental validation of the simulated results. Even the front-tracking scheme (SI-LSM) for which the authors call DNS, this is not perfect on numerical accuracy such as virtual diffusion that depends on differencing scheme. Before data-driven analysis, the authors need to validate their numerical simulation with experimental data. The reviewer thinks that it is easy to visualize a single bubble rising in quiescent liquid.}
+\vspace{.2cm}
+
+
+\item
+\textit{In chapter 2, there are four dimensionless values defined for We, Bo, Re and Fr. According to Buckingham's pi-theory, three are sufficient in this system. This is considerably to confuse general readers working in fluid mechanics!}
+\vspace{.2cm}
+
+
+\item
+\textit{No definition is given for the effective viscosity ``mu-star'' in the viscosity term in Eq.(3). This is critical in computing deformation of bubble interface. Below Eq.(4), there is an equation based on level-set and phase-field functions. However, this is invalid as momentum transfer mechanics or rheology around interface.}
+\vspace{.2cm}
+
+
+\item
+\textit{The density ratio and the viscosity ratio are given by 1/10. This is a very virtual combination of gas and liquid phase, which is uncommon in engineering application. The reason of this value applied is not explained in the manuscript.}
+\vspace{.2cm}
+
+
+\item
+\textit{Some typical results of bubble motion such as in Fig.2 and Fig.4 (c) suggest that these bubbles are still vertical acceleration and continuous stretching. Targeting these initial process for the data-driven approach is essentially un-interesting both for physics and engineering of bubbly two-phase flow. The authors need to compute their terminal behavior which reaches balance between buoyancy and drag, at least.}
+\vspace{.2cm}
+
+
+
+\item
+\textit{Overall, the manuscript seems to be a paper with just enjoying numerics with quite virtual models, without any experimental validation.}
+\vspace{.2cm}
+
+
+\end{enumerate}
+
+%.................................................................
+Following the reviewer's query a thorough revision is done on the manuscript. All questions listed above are addressed in the revised manuscript..
+%.................................................................
+\bibliographystyle{tfnlm}
+\end{document}
+
+

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.11.26)  19 MAR 2026 17:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.11.26)  23 MAR 2026 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -316,15 +316,20 @@ Package pdftex.def Info: Figure7a1-eps-converted-to.pdf  used on input line 17.
 
 (pdftex.def)             Requested size: 244.6536pt x 775.37524pt.
 Package epstopdf Info: Source file: <Figure7c1.eps>
-(epstopdf)                    date: 2026-03-19 16:12:53
-(epstopdf)                    size: 194915 bytes
+(epstopdf)                    date: 2026-03-23 12:46:01
+(epstopdf)                    size: 195273 bytes
 (epstopdf)             Output file: <Figure7c1-eps-converted-to.pdf>
 (epstopdf)                    date: 2026-03-19 16:12:57
 (epstopdf)                    size: 42539 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figure7c1-eps-converted-to
 .pdf Figure7c1.eps>
 (epstopdf)             \includegraphics on input line 21.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figure7c1-eps-converted-to.pdf Figure7c1.eps)...e
+xecuted safely (allowed).
+
+Package epstopdf Info: Result file: <Figure7c1-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-03-23 12:47:32
+(epstopdf)                    size: 42701 bytes.
 <Figure7c1-eps-converted-to.pdf, id=5, 284.06125pt x 817.0525pt>
 File: Figure7c1-eps-converted-to.pdf Graphic file (type pdf)
 <use Figure7c1-eps-converted-to.pdf>
@@ -380,15 +385,20 @@ Package pdftex.def Info: Figure7a2-eps-converted-to.pdf  used on input line 38.
 
 (pdftex.def)             Requested size: 244.6536pt x 818.05424pt.
 Package epstopdf Info: Source file: <Figure7c2.eps>
-(epstopdf)                    date: 2026-03-19 16:16:03
-(epstopdf)                    size: 189758 bytes
+(epstopdf)                    date: 2026-03-23 12:47:03
+(epstopdf)                    size: 190116 bytes
 (epstopdf)             Output file: <Figure7c2-eps-converted-to.pdf>
 (epstopdf)                    date: 2026-03-19 16:16:08
 (epstopdf)                    size: 41710 bytes
 (epstopdf)             Command: <repstopdf --outfile=Figure7c2-eps-converted-to
 .pdf Figure7c2.eps>
 (epstopdf)             \includegraphics on input line 41.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=Figure7c2-eps-converted-to.pdf Figure7c2.eps)...e
+xecuted safely (allowed).
+
+Package epstopdf Info: Result file: <Figure7c2-eps-converted-to.pdf>
+(epstopdf)                    date: 2026-03-23 12:47:32
+(epstopdf)                    size: 41773 bytes.
 <Figure7c2-eps-converted-to.pdf, id=13, 284.06125pt x 817.0525pt>
 File: Figure7c2-eps-converted-to.pdf Graphic file (type pdf)
 <use Figure7c2-eps-converted-to.pdf>
@@ -436,7 +446,7 @@ Here is how much of TeX's memory you used:
 ps/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Figure_7.pdf (1 page, 360487 bytes).
+Output written on Figure_7.pdf (1 page, 360762 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream

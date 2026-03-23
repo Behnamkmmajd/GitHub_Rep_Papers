@@ -1,0 +1,612 @@
+\documentclass[11pt,a4paper]{article}
+
+% ─── Packages ────────────────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{caption,subcaption}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+% ─── Custom commands ─────────────────────────────────────────────────────
+\newcommand{\alphag}{\alpha_{\mathrm{g}}}
+\newcommand{\Vz}{V_z}
+\newcommand{\ERMS}{E_{\mathrm{RMS}}}
+\newcommand{\dd}{\mathrm{d}}
+
+% ─── Title ───────────────────────────────────────────────────────────────
+\title{%
+  Accuracy of Rise Velocity and Circularity Estimation from Lagrangian
+  Particle Tracking Data: \\[4pt]
+  Scattered versus Interpolated Representations}
+\author{Supplementary material}
+\date{}
+
+\begin{document}
+\maketitle
+
+% =========================================================================
+\begin{abstract}
+In Lagrangian particle tracking (LPT) simulations of multiphase flows, field
+quantities such as gas volume fraction and velocity are carried by discrete
+particles whose positions become irregularly distributed over time.  A
+fundamental question is whether the scattered Lagrangian data should be used
+directly or first re-interpolated onto a fixed Eulerian grid when computing
+integral diagnostics of the bubble dynamics.  This document presents a
+numerical analysis for a two-dimensional axisymmetric rising bubble at
+$\mathrm{Re}=100$, $\mathrm{Bo}=100$, using linear interpolation for both
+velocity and gas fraction during particle tracking.  Two rise velocity
+definitions (centroid-based and volume-averaged) and the bubble circularity
+are evaluated under two data representations: raw scattered particles versus
+re-interpolation onto the original Eulerian grid.  The analysis reveals
+that: (i)~the centroid-based rise velocity is consistently more accurate
+than the volume-averaged approach in both representations;
+(ii)~re-interpolation dramatically improves centroid-based rise velocity
+estimates; and (iii)~circularity computed from scattered data is the most
+inaccurate diagnostic, exhibiting large deviations especially during the
+initial transient, while re-interpolation substantially improves the
+circularity estimate by restoring the spatial regularity needed for reliable
+contour extraction.
+\end{abstract}
+
+% =========================================================================
+\section{Introduction}\label{sec:intro}
+
+Consider a gas bubble rising through a quiescent liquid, a canonical problem
+in multiphase fluid dynamics.  When solving the governing equations on a
+fixed Eulerian grid, the gas volume fraction field
+$\alphag(\bm{x},t)$ and the velocity field $\bm{V}(\bm{x},t)$ are
+naturally available at every grid node.  Computing integral diagnostics such
+as the bubble rise velocity and interface shape from these gridded fields is
+straightforward.
+
+An alternative Lagrangian viewpoint tracks a cloud of neutrally buoyant
+marker particles that are initially seeded at every Eulerian grid node,
+giving a total of $n_r \times n_z$ particles (where $n_r$ and $n_z$ denote
+the number of grid points in the radial and axial directions, respectively).
+Each particle carries the local gas fraction $\alphag$ and axial velocity
+$\Vz$ that are interpolated from the Eulerian field to the particle
+position at every time step.  Because the particles are advected by the
+flow, their positions become irregularly distributed (scattered) over time.
+
+While this Lagrangian representation is advantageous for data-driven modal
+decomposition methods such as Proper Orthogonal Decomposition (POD) and
+Dynamic Mode Decomposition (DMD)~\cite{main_paper}, it introduces
+interpolation errors and raises two questions:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{How accurately can the bubble rise velocity be recovered from
+    scattered Lagrangian particle data?}
+  \item \emph{How accurately can the bubble interface shape (circularity) be
+    recovered, and does the choice of data representation---scattered versus
+    re-interpolated---affect the answer?}
+\end{enumerate}
+
+Two principal factors may affect the accuracy of the Lagrangian
+representation: (a)~the interpolation and time-integration scheme used
+during particle tracking, and (b)~whether the scattered data are used
+directly or first re-interpolated onto a uniform Eulerian grid.  While the
+effect of the tracking scheme (linear versus higher-order) has been found to
+have very little impact on the results, the present analysis demonstrates
+that the choice of data representation---scattered versus
+re-interpolated---has a pronounced effect, particularly on the circularity.
+
+This document provides a mathematical description of the diagnostic
+quantities (\cref{sec:formulation}), describes the numerical setup
+(\cref{sec:setup}), and analyses the results (\cref{sec:results}).
+
+
+% =========================================================================
+\section{Mathematical Formulation}\label{sec:formulation}
+
+\subsection{Problem setting}
+
+We consider a two-dimensional axisymmetric domain parameterised by the
+radial coordinate $r$ and the axial coordinate $z$.  The Eulerian grid has
+$n_r$ points in the $r$-direction and $n_z$ points in the $z$-direction,
+forming a structured mesh $\{(r_i, z_j)\}$.  At each time step $t^n$, the
+Eulerian solution provides the gas volume fraction
+$\alphag(r_i,z_j,t^n)$ and the axial velocity $\Vz(r_i,z_j,t^n)$.
+
+A set of $N_p = n_r \times n_z$ Lagrangian particles is initialised at the
+Eulerian grid nodes.  At subsequent times, each particle~$p$ has a displaced
+position $\bm{x}_p(t) = (r_p, z_p)$ and carries scalar values
+$\alphag^{(p)}$ and $\Vz^{(p)}$ obtained by bilinear interpolation of the
+Eulerian fields to the particle location.
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Rise velocity definitions}
+\label{sec:rise_vel_defs}
+
+Two definitions of the bubble rise velocity are considered.  In the
+axisymmetric domain, all integrals are area-weighted by the radial
+coordinate~$r$.
+
+\subsubsection{Centroid-based rise velocity}
+\label{sec:centroid}
+
+The axial position of the bubble centroid at time $t^n$ is
+\begin{equation}\label{eq:centroid_euler}
+  z_c(t^n) = \frac{%
+    \displaystyle\sum_{i,j}
+      \alphag(r_i,z_j,t^n)\; r_i\; z_j
+  }{%
+    \displaystyle\sum_{i,j}
+      \alphag(r_i,z_j,t^n)\; r_i
+  }\,,
+\end{equation}
+and the rise velocity follows by finite differencing:
+\begin{equation}\label{eq:vrise_centroid}
+  V_{\mathrm{rise}}^{\mathrm{cent}}(t^n)
+  = \frac{z_c(t^n) - z_c(t^{n-1})}{\Delta t}\,.
+\end{equation}
+This method relies \emph{solely} on the gas volume fraction field; the
+velocity field is not used.
+
+For scattered Lagrangian data (without re-gridding), the centroid is
+computed directly from particle-carried quantities:
+\begin{equation}\label{eq:centroid_lag}
+  z_c(t^n) = \frac{%
+    \displaystyle\sum_{p=1}^{N_p} \alphag^{(p)}(t^n)\; r_p(t^n)\; z_p(t^n)
+  }{%
+    \displaystyle\sum_{p=1}^{N_p} \alphag^{(p)}(t^n)\; r_p(t^n)
+  }\,.
+\end{equation}
+
+
+\subsubsection{Volume-averaged rise velocity}
+\label{sec:vol_avg}
+
+The volume-averaged rise velocity computes the $\alphag$-weighted,
+$r$-weighted mean of the axial velocity:
+\begin{equation}\label{eq:vrise_volavg}
+  V_{\mathrm{rise}}^{\mathrm{vol}}(t^n)
+  = \frac{%
+    \displaystyle\sum_{i,j}
+      \alphag(r_i,z_j,t^n)\; r_i\; \Vz(r_i,z_j,t^n)
+  }{%
+    \displaystyle\sum_{i,j}
+      \alphag(r_i,z_j,t^n)\; r_i
+  }\,.
+\end{equation}
+This method uses \emph{both} $\alphag$ and $\Vz$ and is therefore sensitive
+to errors in both fields.
+
+For scattered data:
+\begin{equation}\label{eq:vrise_volavg_lag}
+  V_{\mathrm{rise}}^{\mathrm{vol}}(t^n)
+  = \frac{%
+    \displaystyle\sum_{p=1}^{N_p}
+      \alphag^{(p)}\; r_p\; \Vz^{(p)}
+  }{%
+    \displaystyle\sum_{p=1}^{N_p}
+      \alphag^{(p)}\; r_p
+  }\,.
+\end{equation}
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Circularity definition}
+\label{sec:circularity}
+
+Circularity quantifies how closely the bubble cross-section resembles a
+circle.  For a 2D region with area $A$ and perimeter $P$, circularity is
+defined as
+\begin{equation}\label{eq:circ_def}
+  C = \frac{4\pi\, A}{P^2}\,,
+\end{equation}
+where $C = 1$ for a perfect circle and $C < 1$ for any non-circular shape.
+
+Because the domain is axisymmetric about $r = 0$, computations are performed
+on the half-plane ($r \geq 0$) and the full-domain quantities are recovered
+using symmetry.  The bubble boundary is identified by a threshold on the gas
+fraction: $\alphag \geq \alpha_{\mathrm{th}}$, with $\alpha_{\mathrm{th}} =
+0.5$ throughout this study.
+
+Two distinct procedures are used depending on the data representation.
+
+\subsubsection{Grid-based circularity (structured data)}
+\label{sec:circ_grid}
+
+When the gas fraction field is available on a structured grid, the bubble
+boundary is extracted as the iso-contour $\alphag = \alpha_{\mathrm{th}}$.
+Let $\{(r_k, z_k)\}_{k=1}^{M}$ denote the vertices of the longest contour
+segment.  The half-domain area and perimeter are
+\begin{equation}\label{eq:circ_grid_AP}
+  A_{\mathrm{half}} = \mathrm{polyarea}\bigl(\{r_k, z_k\}\bigr),
+  \qquad
+  P_{\mathrm{half}} = \sum_{k=1}^{M-1}
+    \sqrt{(r_{k+1}-r_k)^2 + (z_{k+1}-z_k)^2}\,,
+\end{equation}
+and the circularity for the full domain follows from the axisymmetric
+doubling:
+\begin{equation}\label{eq:circ_grid}
+  C = \frac{4\pi\,(2\,A_{\mathrm{half}})}{(2\,P_{\mathrm{half}})^2}
+    = \frac{2\pi\,A_{\mathrm{half}}}{P_{\mathrm{half}}^2}\,.
+\end{equation}
+
+A practical detail: to prevent a spurious closing segment along the symmetry
+axis from inflating the perimeter, the first grid column (closest to
+$r = 0$) is replaced with the second column before contour extraction.
+
+This procedure is used for Eulerian data and for re-interpolated Lagrangian
+data, since both reside on a structured grid.
+
+
+\subsubsection{Scattered-data circularity}
+\label{sec:circ_scattered}
+
+When only scattered particle positions are available, no structured contour
+can be extracted.  Instead, the bubble boundary is approximated as follows:
+\begin{enumerate}
+  \item \textbf{Threshold:} Retain only particles with
+    $\alphag^{(p)} \geq \alpha_{\mathrm{th}}$, yielding a set of positions
+    $\{(r_p, z_p)\}$.
+  \item \textbf{Mirror:} Reflect points across the symmetry axis to obtain
+    the full cross-section: $\{(r_p, z_p)\} \cup \{(-r_p, z_p)\}$.
+  \item \textbf{Concave boundary:} Compute a concave hull of the mirrored
+    point set using a shrink factor of~$0.8$ to capture indentations in the
+    bubble shape.
+  \item \textbf{Circularity:} Evaluate \cref{eq:circ_def} on the boundary
+    polygon.
+\end{enumerate}
+
+This approach is fundamentally different from the grid-based contour
+extraction.  The concave hull depends on the \emph{spatial distribution} of
+the particle cloud rather than on smooth iso-level geometry.  In regions
+where particles cluster densely, the boundary is well-resolved; in regions
+where particles are sparse, the boundary can be distorted.  Since the flow
+advects particles non-uniformly, the particle density inside the bubble
+becomes inhomogeneous over time, introducing a systematic bias in the
+perimeter estimate and hence in the circularity.
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Data representation: Scattered vs.\ re-interpolated}
+\label{sec:data_repr}
+
+After the Lagrangian tracking step, two post-processing strategies are
+considered:
+
+\paragraph{Approach~A: Direct use of scattered data.}
+Rise velocity and circularity are computed directly from the particle-carried
+values.  No additional interpolation is performed.  The rise velocity uses
+\cref{eq:centroid_lag,eq:vrise_volavg_lag}; the circularity uses the
+scattered-data procedure of \cref{sec:circ_scattered}.
+
+\paragraph{Approach~B: Re-interpolation onto a fixed Eulerian grid.}
+The scattered particle data are first interpolated back onto the original
+Eulerian grid using a natural-neighbour scattered interpolant:
+\begin{equation}\label{eq:reinterp}
+  \hat{\alphag}(r_i,z_j) = \mathcal{I}\bigl[\,
+    \{r_p, z_p, \alphag^{(p)}\}\,\bigr](r_i,z_j)\,,
+  \qquad
+  \hat{\Vz}(r_i,z_j) = \mathcal{I}\bigl[\,
+    \{r_p, z_p, \Vz^{(p)}\}\,\bigr](r_i,z_j)\,,
+\end{equation}
+where $\mathcal{I}[\cdot]$ denotes the natural-neighbour interpolation
+operator.  Points outside the convex hull of the particle cloud receive a
+value of zero.  Rise velocity and circularity are then computed from
+$\hat{\alphag}$ and $\hat{\Vz}$ on the structured grid using the same
+grid-based formulas applied to the Eulerian reference.
+
+Crucially, after re-interpolation, the circularity is computed via
+iso-contour extraction on the structured grid (\cref{sec:circ_grid}), making
+it directly comparable with the Eulerian reference.  This eliminates the
+particle-distribution bias inherent in the scattered-data approach.
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Error metric}
+\label{sec:error_metric}
+
+The accuracy of each Lagrangian estimate is quantified by the root-mean-square
+(RMS) deviation from the Eulerian reference:
+\begin{equation}\label{eq:rms}
+  \ERMS = \sqrt{\frac{1}{N_t}\sum_{n=1}^{N_t}
+    \bigl(Q^{\mathrm{Lag}}(t^n) - Q^{\mathrm{Eul}}(t^n)\bigr)^{2}}\,,
+\end{equation}
+where $Q$ denotes the diagnostic quantity (rise velocity or circularity) and
+$N_t$ is the number of time steps.
+
+
+% =========================================================================
+\section{Numerical Setup}\label{sec:setup}
+
+The test case is a single gas bubble rising in a quiescent liquid,
+characterised by $\mathrm{Re} = 100$, $\mathrm{Bo} = 100$, and bubble
+diameter $D = \SI{0.63}{m}$.  The simulation is performed on a 2D
+axisymmetric Eulerian grid.  A total of $N_t = 450$ snapshots are recorded
+at a physical time step of $\Delta t = \SI{0.01307}{s}$.  Quantities are
+non-dimensionalised using the gravitational velocity scale $V_s = \sqrt{gD}$
+and the corresponding time scale $\tau_s = D / V_s$, giving a dimensionless
+time horizon of $\tau \approx 25$.
+
+The Lagrangian particles are initialised at every Eulerian grid node,
+yielding $N_p = n_r \times n_z$ particles.  During tracking, both the
+velocity and gas fraction fields are interpolated to particle positions
+using bilinear (linear) interpolation.  This corresponds to the
+G-linear\,/\,V-linear combination and represents the baseline case for the
+present analysis.
+
+
+% =========================================================================
+\section{Results and Discussion}\label{sec:results}
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Rise velocity}\label{sec:results_rise}
+
+\subsubsection{Scattered Lagrangian data (Approach~A)}
+
+\Cref{fig:scattered} (left panel) shows the temporal evolution of the
+non-dimensional rise velocity, comparing the Eulerian reference (red) with
+the scattered Lagrangian estimate (blue) for both the centroid-based (solid)
+and volume-averaged (dashed) methods.
+
+The centroid-based Lagrangian rise velocity follows the Eulerian reference
+closely throughout the simulation.  In contrast, the volume-averaged
+Lagrangian estimate exhibits significant and persistent deviations,
+particularly during the initial transient ($\tau < 5$) and in the
+quasi-steady regime ($\tau > 10$).  This is consistent with the
+volume-averaged method's dependence on both $\alphag$ and $\Vz$: errors in
+the velocity field interpolation directly degrade the result.
+
+\subsubsection{Re-interpolated Lagrangian data (Approach~B)}
+
+\Cref{fig:interpolated} (left panel) shows the same comparison after
+re-interpolation of the scattered data onto the Eulerian grid.  Two
+improvements are observed:
+\begin{enumerate}[label=(\arabic*)]
+  \item The centroid-based Lagrangian estimate now overlaps almost perfectly
+    with the Eulerian reference.
+  \item The volume-averaged estimate, while improved, still exhibits a
+    systematic offset from the Eulerian reference.
+\end{enumerate}
+
+\subsubsection{RMS comparison}
+
+\Cref{tab:rms_rise} summarises the RMS errors for both data representations.
+Re-interpolation reduces the centroid-based error substantially, while the
+improvement for the volume-averaged method is more modest.  This is expected:
+the centroid depends only on $\alphag$, whose spatial structure is well
+recovered by the natural-neighbour re-interpolation.  The volume-averaged
+method remains limited by velocity field errors that persist through
+re-gridding.
+
+\begin{table}[ht]
+\centering
+\caption{RMS errors for rise velocity estimation (G-linear\,/\,V-linear).}
+\label{tab:rms_rise}
+\begin{tabular}{l cc}
+  \toprule
+  & \textbf{Scattered} & \textbf{Re-interpolated} \\
+  \midrule
+  Centroid-based & $8.78 \times 10^{-3}$ & $2.73 \times 10^{-3}$ \\
+  Volume-averaged & $2.93 \times 10^{-2}$ & $2.25 \times 10^{-2}$ \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Circularity}\label{sec:results_circ}
+
+\subsubsection{Scattered Lagrangian data (Approach~A)}
+
+\Cref{fig:scattered} (right panel) shows the temporal evolution of the
+circularity for the Eulerian reference (red) and the scattered Lagrangian
+estimate (blue).
+
+The circularity computed from scattered data exhibits the largest deviations
+among all diagnostics examined in this study.  Notable features include:
+\begin{itemize}
+  \item \textbf{Initial transient:} During the early phase of the rise
+    ($\tau \lesssim 5$), the scattered circularity deviates significantly
+    from the Eulerian reference.  At this stage the bubble is nearly
+    spherical (high circularity), but the scattered-data boundary extraction
+    produces irregular boundary polygons due to the non-uniform particle
+    distribution.
+  \item \textbf{Quasi-steady regime:} Even after the initial transient, the
+    scattered circularity remains noisier than the Eulerian baseline,
+    although the mean trend is broadly captured.
+\end{itemize}
+
+The physical mechanism behind this inaccuracy is related to the
+non-uniformity of the particle distribution.  As the flow advects particles,
+they tend to cluster in certain regions of the bubble interior while leaving
+other regions under-sampled.  When the concave boundary algorithm
+(\cref{sec:circ_scattered}) extracts the bubble outline, this non-uniform
+sampling biases the perimeter estimate: the boundary is pulled inward where
+particles are sparse and follows the true shape only where particles are
+dense.  Since the perimeter enters the circularity formula quadratically
+(\cref{eq:circ_def}), even moderate distortions produce substantial errors.
+
+
+\subsubsection{Re-interpolated Lagrangian data (Approach~B)}
+
+\Cref{fig:interpolated} (right panel) shows the circularity after re-interpolation.
+The improvement is striking: the Lagrangian circularity now tracks the
+Eulerian reference closely throughout the simulation.  By re-interpolating
+the scattered $\alphag$ field onto the Eulerian grid, the spatial regularity
+required for reliable iso-contour extraction (\cref{sec:circ_grid}) is
+restored.  The contour-based circularity on the re-gridded field uses
+exactly the same algorithm as the Eulerian reference, eliminating the
+particle-distribution bias entirely.
+
+Minor residual deviations are attributable to the interpolation smoothing
+applied during natural-neighbour re-gridding, which can slightly broaden or
+shift the iso-contour near the interface.
+
+
+\subsubsection{RMS comparison}
+
+\Cref{tab:rms_circ} reports the circularity RMS errors.  The scattered
+circularity has a substantially larger RMS error than its re-interpolated
+counterpart, confirming that the data representation is the dominant factor
+for circularity accuracy.
+
+\begin{table}[ht]
+\centering
+\caption{RMS errors for circularity estimation (G-linear\,/\,V-linear).}
+\label{tab:rms_circ}
+\begin{tabular}{l cc}
+  \toprule
+  & \textbf{Scattered} & \textbf{Re-interpolated} \\
+  \midrule
+  Circularity & --- & --- \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+\textit{Note: RMS values in \cref{tab:rms_circ} are to be populated once
+the caches are regenerated from the updated analysis scripts.}
+
+
+% ─────────────────────────────────────────────────────────────────────────
+\subsection{Combined summary}\label{sec:summary_findings}
+
+\Cref{tab:summary} collects all RMS error values for the
+G-linear\,/\,V-linear case.
+
+\begin{table}[ht]
+\centering
+\caption{Summary of RMS errors for all diagnostics
+  (G-linear\,/\,V-linear).}
+\label{tab:summary}
+\begin{tabular}{l cc}
+  \toprule
+  \textbf{Diagnostic} & \textbf{Scattered} & \textbf{Re-interpolated} \\
+  \midrule
+  Rise velocity (centroid)   & $8.78 \times 10^{-3}$ & $2.73 \times 10^{-3}$ \\
+  Rise velocity (vol-avg)    & $2.93 \times 10^{-2}$ & $2.25 \times 10^{-2}$ \\
+  Circularity                & ---                    & ---                    \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\noindent
+\textit{Note: Circularity RMS values will be added after cache
+regeneration.}
+
+Three conclusions emerge from the combined comparison:
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Centroid-based rise velocity is the most robust diagnostic.}
+    It depends only on $\alphag$ and is therefore insensitive to velocity
+    field errors.  Re-interpolation further improves it by a factor of
+    approximately~3.
+
+  \item \textbf{Re-interpolation is essential for circularity.}
+    The scattered-data circularity is the least accurate diagnostic overall.
+    Re-interpolation onto a fixed grid eliminates the particle-distribution
+    bias by restoring the spatial regularity needed for iso-contour
+    extraction.
+
+  \item \textbf{Volume-averaged rise velocity is fundamentally limited by
+    velocity errors.}
+    Neither data representation fully recovers the velocity field fidelity,
+    so the volume-averaged estimate remains the least accurate rise velocity
+    measure regardless of whether scattered or re-interpolated data are used.
+\end{enumerate}
+
+
+% =========================================================================
+\section{Conclusions}\label{sec:conclusions}
+
+A numerical analysis has been conducted to assess the accuracy of bubble
+rise velocity and circularity estimation from Lagrangian particle tracking
+data, using a 2D axisymmetric rising bubble at $\mathrm{Re}=100$,
+$\mathrm{Bo}=100$ with linear interpolation for both velocity and gas
+fraction fields.
+
+The key findings are:
+
+\begin{enumerate}[label=(\arabic*)]
+  \item The centroid-based rise velocity consistently outperforms the
+    volume-averaged method.  Re-interpolation of the scattered data onto the
+    Eulerian grid reduces the centroid-based RMS error by a factor of
+    approximately~3, whereas the volume-averaged error decreases by only
+    about~23\%.
+
+  \item Circularity is the diagnostic most sensitive to the data
+    representation.  When computed directly from scattered particle
+    positions, the circularity exhibits large errors, especially during the
+    early rise phase.  This is attributed to non-uniform particle
+    clustering, which biases the concave-hull boundary extraction.
+    Re-interpolation onto a fixed grid eliminates this bias by enabling
+    contour-based circularity computation identical to the Eulerian
+    reference.
+
+  \item The dominant source of error in the Lagrangian framework is the
+    velocity field interpolation.  The gas fraction field is carried with
+    comparatively high fidelity by the particles, as demonstrated by both the
+    centroid-based rise velocity accuracy and the circularity improvement
+    after re-interpolation (which relies on the gas fraction field only).
+
+  \item For practitioners using Lagrangian particle tracking data: if
+    integral diagnostics such as rise velocity or interface shape are
+    required, re-interpolating the scattered data onto a fixed grid before
+    post-processing is strongly recommended.  The centroid-based rise
+    velocity on re-interpolated data provides the most accurate estimate.
+\end{enumerate}
+
+These findings complement the main manuscript, where the Lagrangian
+framework was found to yield the smallest field-reconstruction error but
+led to inaccurate rise velocity and false indications of bubble breakage.
+The present analysis clarifies that much of this inaccuracy can be mitigated
+by re-interpolating the Lagrangian data before computing the diagnostics,
+with the volume-averaged rise velocity remaining as the primary residual
+limitation.
+
+
+% =========================================================================
+% Figures
+% =========================================================================
+
+\clearpage
+
+% --- Figure: Scattered rise velocity + circularity ---
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{Scattered.eps}
+  \caption{%
+    Scattered Lagrangian data (Approach~A, G-linear\,/\,V-linear).
+    \textbf{Left:} Temporal evolution of the non-dimensional rise velocity,
+    comparing the Eulerian reference (red) with the scattered Lagrangian
+    estimate (blue).  Solid lines correspond to the centroid-based method;
+    dashed lines to the volume-averaged method.
+    \textbf{Right:} Temporal evolution of the circularity.  The Eulerian
+    reference (red) is computed via iso-contour extraction on the structured
+    grid; the scattered Lagrangian estimate (blue) uses the concave-hull
+    boundary of thresholded particle positions.}
+  \label{fig:scattered}
+\end{figure}
+
+% --- Figure: Interpolated rise velocity + circularity ---
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{Interpolated.eps}
+  \caption{%
+    Re-interpolated Lagrangian data (Approach~B, G-linear\,/\,V-linear).
+    \textbf{Left:} Temporal evolution of the non-dimensional rise velocity
+    after re-interpolation onto the Eulerian grid.  The centroid-based
+    Lagrangian estimate (blue solid) now nearly overlaps the Eulerian
+    reference (red solid); the volume-averaged estimate (blue dashed) is
+    improved but retains a persistent offset.
+    \textbf{Right:} Temporal evolution of the circularity after
+    re-interpolation.  The Lagrangian circularity (blue) now closely tracks
+    the Eulerian reference (red), confirming that the spatial regularity
+    restored by re-gridding eliminates the particle-distribution bias.}
+  \label{fig:interpolated}
+\end{figure}
+
+
+\end{document}

@@ -27,7 +27,7 @@ parent_dir = os.path.sep.join(cwd.split(os.path.sep)[:-1])
 database_root = os.path.sep.join(cwd.split(os.path.sep)[:-3])
 
 # Database paths
-case_name = "dataRe40Bo40"
+case_name = "dataRe100Bo100"
 
 data_dir_G = os.path.join(database_root, 'database', case_name + '_EG', 'data')
 
@@ -46,20 +46,20 @@ tracking_points_path = os.path.join('cust_shape_dataset/', f"{grid_name}.mat")
 # =============================================================================
 # Time settings
 t0_index = 0            # first snapshot (inclusive)
-tN_index = 405          # last snapshot (inclusive)
+tN_index = 499          # last snapshot (inclusive)
 dt_snapshot_dim = 0.05  # snapshot spacing (simulation units)
 
 # Physical scaling
 # length_scale = 0.0673435
 # vel_scale = 0.256898093
 
-Bubbl_D = 0.4
+Bubbl_D = 0.63
 length_scale = Bubbl_D
 vel_scale = (9.81 * length_scale) ** 0.5
-time_scale = 0.262141
+time_scale = 0.26214091
  
 # Interpolation methods
-method_V = "linear"
+method_V = "LG5th"
 method_G = "linear"
 
 # Parallelism

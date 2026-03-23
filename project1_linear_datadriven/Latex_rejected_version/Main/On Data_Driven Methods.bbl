@@ -1,0 +1,357 @@
+\begin{thebibliography}{39}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Larimi and Ramiar(2018)}]{Larimi2018}
+\bibinfo{author}{M.~Larimi}, \bibinfo{author}{A.~Ramiar},
+\newblock \bibinfo{title}{{Two-dimensional bubble rising through quiescent and
+  non-quiescent fluid: Influence on heat transfer and flow behavior}},
+\newblock \bibinfo{journal}{Int. J. Therm. Sci.} \bibinfo{volume}{131}
+  (\bibinfo{year}{2018}) \bibinfo{pages}{58--71}.
+  \DOIprefix\doi{10.1016/j.ijthermalsci.2018.05.031}.
+%Type = Article
+\bibitem[{Kentheswaran et~al.(2023)Kentheswaran, Antier, Dietrich, and
+  Lalanne}]{Kentheswaran2023}
+\bibinfo{author}{K.~Kentheswaran}, \bibinfo{author}{W.~Antier},
+  \bibinfo{author}{N.~Dietrich}, \bibinfo{author}{B.~Lalanne},
+\newblock \bibinfo{title}{{Impact of surfactants on the rise of deformable
+  bubbles and interfacial gas–liquid mass transfer}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{970}
+  (\bibinfo{year}{2023}) \bibinfo{pages}{A5}.
+  \DOIprefix\doi{10.1017/jfm.2023.592}.
+%Type = Article
+\bibitem[{Hamdollahi et~al.(2022)Hamdollahi, Lotfi, Shafiee, and
+  Hemmati}]{Hamdollahi2022}
+\bibinfo{author}{E.~Hamdollahi}, \bibinfo{author}{M.~Lotfi},
+  \bibinfo{author}{M.~Shafiee}, \bibinfo{author}{A.~Hemmati},
+\newblock \bibinfo{title}{{Investigation of antibiotic surface activity by
+  tracking hydrodynamic of a rising bubble}},
+\newblock \bibinfo{journal}{J. Ind. Eng. Chem.} \bibinfo{volume}{108}
+  (\bibinfo{year}{2022}) \bibinfo{pages}{101--108}.
+  \DOIprefix\doi{10.1016/j.jiec.2021.12.029}.
+%Type = Article
+\bibitem[{Fang et~al.(2022)Fang, Ming, Wang, Sun, and Zhang}]{Fang2022}
+\bibinfo{author}{X.-L. Fang}, \bibinfo{author}{F.-R. Ming},
+  \bibinfo{author}{P.-P. Wang}, \bibinfo{author}{P.-N. Sun},
+  \bibinfo{author}{A.-M. Zhang},
+\newblock \bibinfo{title}{{Application of SPH method in the study of ship
+  capsizing induced by large-scale rising bubble}},
+\newblock \bibinfo{journal}{Ocean Eng.} \bibinfo{volume}{257}
+  (\bibinfo{year}{2022}) \bibinfo{pages}{111629}.
+  \DOIprefix\doi{10.1016/j.oceaneng.2022.111629}.
+%Type = Article
+\bibitem[{Ouyang et~al.(2021)Ouyang, Yan, Zhang, and Yang}]{Ouyang2021}
+\bibinfo{author}{D.-H. Ouyang}, \bibinfo{author}{W.-R. Yan},
+  \bibinfo{author}{Q.-T. Zhang}, \bibinfo{author}{C.-H. Yang},
+\newblock \bibinfo{title}{{Movement and acoustic radiation of a rising bubble
+  from combustion of pyrotechnic mixtures using experiment and image processing
+  method}},
+\newblock \bibinfo{journal}{Phys. Fluids} \bibinfo{volume}{33}
+  (\bibinfo{year}{2021}) \bibinfo{pages}{105114}.
+  \DOIprefix\doi{10.1063/5.0063854}.
+%Type = Article
+\bibitem[{Saffman(1956)}]{Saffman1956}
+\bibinfo{author}{P.~G. Saffman},
+\newblock \bibinfo{title}{{On the rise of small air bubbles in water}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{1}
+  (\bibinfo{year}{1956}) \bibinfo{pages}{249--275}.
+  \DOIprefix\doi{10.1017/S0022112056000159}.
+%Type = Article
+\bibitem[{Tsuge and Hibino(1977)}]{TSUGE1977}
+\bibinfo{author}{H.~Tsuge}, \bibinfo{author}{S.-I. Hibino},
+\newblock \bibinfo{title}{{The onset conditions of oscillatory motion of single
+  gas bubbles rising in various liquids.}},
+\newblock \bibinfo{journal}{J. Chem. Eng. JAPAN} \bibinfo{volume}{10}
+  (\bibinfo{year}{1977}) \bibinfo{pages}{66--68}.
+  \DOIprefix\doi{10.1252/jcej.10.66}.
+%Type = Article
+\bibitem[{Duineveld(1995)}]{Duineveld1995}
+\bibinfo{author}{P.~C. Duineveld},
+\newblock \bibinfo{title}{{The rise velocity and shape of bubbles in pure water
+  at high Reynolds number}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{292}
+  (\bibinfo{year}{1995}) \bibinfo{pages}{325--332}.
+  \DOIprefix\doi{10.1017/S0022112095001546}.
+%Type = Article
+\bibitem[{Shi et~al.(2024)Shi, Zhang, and Magnaudet}]{Shi2024}
+\bibinfo{author}{P.~Shi}, \bibinfo{author}{J.~Zhang},
+  \bibinfo{author}{J.~Magnaudet},
+\newblock \bibinfo{title}{{Lateral migration and bouncing of a deformable
+  bubble rising near a vertical wall. Part 1. Moderately inertial regimes}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{998}
+  (\bibinfo{year}{2024}) \bibinfo{pages}{A8}.
+  \DOIprefix\doi{10.1017/jfm.2024.865}.
+%Type = Article
+\bibitem[{Bonnefis et~al.(2024)Bonnefis, Sierra-Ausin, Fabre, and
+  Magnaudet}]{Bonnefis2024}
+\bibinfo{author}{P.~Bonnefis}, \bibinfo{author}{J.~Sierra-Ausin},
+  \bibinfo{author}{D.~Fabre}, \bibinfo{author}{J.~Magnaudet},
+\newblock \bibinfo{title}{{Path instability of deformable bubbles rising in
+  Newtonian liquids: a linear study}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{980}
+  (\bibinfo{year}{2024}) \bibinfo{pages}{A19}.
+  \DOIprefix\doi{10.1017/jfm.2024.19}.
+%Type = Article
+\bibitem[{Hosen et~al.(2024)Hosen, Shahmardi, Brandt, and Solsvik}]{Hosen2024}
+\bibinfo{author}{H.~F. Hosen}, \bibinfo{author}{A.~Shahmardi},
+  \bibinfo{author}{L.~Brandt}, \bibinfo{author}{J.~Solsvik},
+\newblock \bibinfo{title}{{Dynamics of a single bubble in Newtonian and
+  non-Newtonian fluids: Experimental and simulation approaches}},
+\newblock \bibinfo{journal}{Int. J. Multiph. Flow} \bibinfo{volume}{174}
+  (\bibinfo{year}{2024}) \bibinfo{pages}{104789}.
+  \DOIprefix\doi{10.1016/j.ijmultiphaseflow.2024.104789}.
+%Type = Article
+\bibitem[{Liu and Zheng(2006)}]{Liu2006}
+\bibinfo{author}{Z.~Liu}, \bibinfo{author}{Y.~Zheng},
+\newblock \bibinfo{title}{{PIV study of bubble rising behavior}},
+\newblock \bibinfo{journal}{Powder Technol.} \bibinfo{volume}{168}
+  (\bibinfo{year}{2006}) \bibinfo{pages}{10--20}.
+  \DOIprefix\doi{10.1016/j.powtec.2006.05.020}.
+%Type = Article
+\bibitem[{Cano-Lozano et~al.(2016)Cano-Lozano, Mart{\'{i}}nez-Baz{\'{a}}n,
+  Magnaudet, and Tchoufag}]{Cano-Lozano2016}
+\bibinfo{author}{J.~C. Cano-Lozano},
+  \bibinfo{author}{C.~Mart{\'{i}}nez-Baz{\'{a}}n},
+  \bibinfo{author}{J.~Magnaudet}, \bibinfo{author}{J.~Tchoufag},
+\newblock \bibinfo{title}{{Paths and wakes of deformable nearly spheroidal
+  rising bubbles close to the transition to path instability}},
+\newblock \bibinfo{journal}{Phys. Rev. Fluids} \bibinfo{volume}{1}
+  (\bibinfo{year}{2016}) \bibinfo{pages}{053604}.
+  \DOIprefix\doi{10.1103/PhysRevFluids.1.053604}.
+%Type = Article
+\bibitem[{Kure et~al.(2021)Kure, Jakobsen, {La Forgia}, and Solsvik}]{Kure2021}
+\bibinfo{author}{I.~K. Kure}, \bibinfo{author}{H.~A. Jakobsen},
+  \bibinfo{author}{N.~{La Forgia}}, \bibinfo{author}{J.~Solsvik},
+\newblock \bibinfo{title}{{Experimental investigation of single bubbles rising
+  in stagnant liquid: Statistical analysis and image processing}},
+\newblock \bibinfo{journal}{Phys. Fluids} \bibinfo{volume}{33}
+  (\bibinfo{year}{2021}) \bibinfo{pages}{103611}.
+  \DOIprefix\doi{10.1063/5.0061581}.
+%Type = Article
+\bibitem[{Lumley(1967)}]{Lumley1967166}
+\bibinfo{author}{J.~L. Lumley},
+\newblock \bibinfo{title}{{The structure of inhomogeneous turbulent flows. In
+  Atmospheric Turbulence and Radio Wave Propagation}},
+\newblock \bibinfo{journal}{Struct. Inhomogeneous Turbul. Flows}
+  (\bibinfo{year}{1967}) \bibinfo{pages}{166 -- 178}.
+%Type = Article
+\bibitem[{Volkwein(2013)}]{volkwein2013proper}
+\bibinfo{author}{S.~Volkwein},
+\newblock \bibinfo{title}{{Proper orthogonal decomposition: Theory and
+  reduced-order modelling}},
+\newblock \bibinfo{journal}{Lect. Notes, Univ. Konstanz} \bibinfo{volume}{4}
+  (\bibinfo{year}{2013}) \bibinfo{pages}{1--29}.
+%Type = Article
+\bibitem[{Berkooz et~al.(1993)Berkooz, Holmes, and Lumley}]{Berkooz1993}
+\bibinfo{author}{G.~Berkooz}, \bibinfo{author}{P.~Holmes},
+  \bibinfo{author}{J.~L. Lumley},
+\newblock \bibinfo{title}{{The proper orthogonal decomposition in the analysis
+  of turbulent flows}},
+\newblock \bibinfo{journal}{Annu. Rev. Fluid Mech.} \bibinfo{volume}{25}
+  (\bibinfo{year}{1993}) \bibinfo{pages}{539--575}.
+  \DOIprefix\doi{10.1146/annurev.fl.25.010193.002543}.
+%Type = Book
+\bibitem[{Holmes et~al.(1996)Holmes, Lumley, and Berkooz}]{Holmes1996}
+\bibinfo{author}{P.~Holmes}, \bibinfo{author}{J.~L. Lumley},
+  \bibinfo{author}{G.~Berkooz}, \bibinfo{title}{{Turbulence, coherent
+  structures, dynamical systems and symmetry}}, \bibinfo{publisher}{Cambridge
+  University Press}, \bibinfo{year}{1996}.
+  \DOIprefix\doi{10.1017/CBO9780511622700}.
+%Type = Article
+\bibitem[{Schmid(2010)}]{SCHMID2010}
+\bibinfo{author}{P.~J. Schmid},
+\newblock \bibinfo{title}{{Dynamic mode decomposition of numerical and
+  experimental data}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{656}
+  (\bibinfo{year}{2010}) \bibinfo{pages}{5--28}.
+  \DOIprefix\doi{10.1017/S0022112010001217}.
+%Type = Article
+\bibitem[{Towne et~al.(2018)Towne, Schmidt, and Colonius}]{Towne2018}
+\bibinfo{author}{A.~Towne}, \bibinfo{author}{O.~T. Schmidt},
+  \bibinfo{author}{T.~Colonius},
+\newblock \bibinfo{title}{{Spectral proper orthogonal decomposition and its
+  relationship to dynamic mode decomposition and resolvent analysis}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{847}
+  (\bibinfo{year}{2018}) \bibinfo{pages}{821--867}.
+  \DOIprefix\doi{10.1017/jfm.2018.283}.
+%Type = Article
+\bibitem[{{Le Clainche} and Vega(2017)}]{LeClainche2017}
+\bibinfo{author}{S.~{Le Clainche}}, \bibinfo{author}{J.~M. Vega},
+\newblock \bibinfo{title}{{Higher order dynamic mode decomposition}},
+\newblock \bibinfo{journal}{SIAM J. Appl. Dyn. Syst.} \bibinfo{volume}{16}
+  (\bibinfo{year}{2017}) \bibinfo{pages}{882--925}.
+  \DOIprefix\doi{10.1137/15M1054924}.
+%Type = Article
+\bibitem[{Mendez et~al.(2019)Mendez, Balabane, and Buchlin}]{Mendez2019}
+\bibinfo{author}{M.~A. Mendez}, \bibinfo{author}{M.~Balabane},
+  \bibinfo{author}{J.-M. Buchlin},
+\newblock \bibinfo{title}{{Multi-scale proper orthogonal decomposition of
+  complex fluid flows}},
+\newblock \bibinfo{journal}{J. Fluid Mech.} \bibinfo{volume}{870}
+  (\bibinfo{year}{2019}) \bibinfo{pages}{988--1036}.
+  \DOIprefix\doi{10.1017/jfm.2019.212}.
+%Type = Article
+\bibitem[{Kutz et~al.(2016)Kutz, Fu, and Brunton}]{Kutzz2016a}
+\bibinfo{author}{J.~N. Kutz}, \bibinfo{author}{X.~Fu}, \bibinfo{author}{S.~L.
+  Brunton},
+\newblock \bibinfo{title}{{Multiresolution dynamic mode decomposition}},
+\newblock \bibinfo{journal}{SIAM J. Appl. Dyn. Syst.} \bibinfo{volume}{15}
+  (\bibinfo{year}{2016}) \bibinfo{pages}{713--735}.
+  \DOIprefix\doi{10.1137/15M1023543}.
+%Type = Article
+\bibitem[{Lu and Tartakovsky(2020)}]{Lu2020}
+\bibinfo{author}{H.~Lu}, \bibinfo{author}{D.~M. Tartakovsky},
+\newblock \bibinfo{title}{{Lagrangian dynamic mode decomposition for
+  construction of reduced-order models of advection-dominated phenomena}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{407}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{109229}.
+  \DOIprefix\doi{10.1016/j.jcp.2020.109229}.
+%Type = Article
+\bibitem[{Yin et~al.(2023{\natexlab{a}})Yin, Jia, Yuan, and Luo}]{Yin2023a}
+\bibinfo{author}{Y.~Yin}, \bibinfo{author}{S.~Jia}, \bibinfo{author}{X.~Yuan},
+  \bibinfo{author}{Y.~Luo},
+\newblock \bibinfo{title}{{Reconstruction and prediction of rising bubble by
+  Lagrange DMD in data-driven}},
+\newblock \bibinfo{journal}{Chem. Eng. Res. Des.} \bibinfo{volume}{189}
+  (\bibinfo{year}{2023}{\natexlab{a}}) \bibinfo{pages}{220--233}.
+  \DOIprefix\doi{10.1016/j.cherd.2022.11.027}.
+%Type = Article
+\bibitem[{Yin et~al.(2023{\natexlab{b}})Yin, Jia, Yuan, Luo, and
+  Zhang}]{Yin2023}
+\bibinfo{author}{Y.~Yin}, \bibinfo{author}{S.~Jia}, \bibinfo{author}{X.~Yuan},
+  \bibinfo{author}{Y.~Luo}, \bibinfo{author}{H.~Zhang},
+\newblock \bibinfo{title}{{Data-Driven bubble tracking DMD method for
+  predicting bubble rising behaviors in a Hele-Shaw cell}},
+\newblock \bibinfo{journal}{Ind. Eng. Chem. Res.} \bibinfo{volume}{62}
+  (\bibinfo{year}{2023}{\natexlab{b}}) \bibinfo{pages}{15255--15267}.
+  \DOIprefix\doi{10.1021/acs.iecr.3c01121}.
+%Type = Article
+\bibitem[{Chirammel et~al.(2023)Chirammel, Sharma, and
+  Murallidharan}]{Chirammel2023}
+\bibinfo{author}{S.~S. Chirammel}, \bibinfo{author}{A.~Sharma},
+  \bibinfo{author}{J.~S. Murallidharan},
+\newblock \bibinfo{title}{{On ghost fluid method-based sharp interface level
+  set method on a co-located grid and its comparison with balanced force-based
+  diffuse interface method}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{485}
+  (\bibinfo{year}{2023}) \bibinfo{pages}{112109}.
+  \DOIprefix\doi{10.1016/j.jcp.2023.112109}.
+%Type = Article
+\bibitem[{Jain et~al.(2020)Jain, Mani, and Moin}]{Jain2020}
+\bibinfo{author}{S.~S. Jain}, \bibinfo{author}{A.~Mani},
+  \bibinfo{author}{P.~Moin},
+\newblock \bibinfo{title}{{A conservative diffuse-interface method for
+  compressible two-phase flows}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{418}
+  (\bibinfo{year}{2020}) \bibinfo{pages}{109606}.
+  \DOIprefix\doi{10.1016/j.jcp.2020.109606}.
+%Type = Article
+\bibitem[{Salimi et~al.(2025)Salimi, Mukherjee, Pelanti, and
+  Brandt}]{Salimi2025}
+\bibinfo{author}{S.~Z. Salimi}, \bibinfo{author}{A.~Mukherjee},
+  \bibinfo{author}{M.~Pelanti}, \bibinfo{author}{L.~Brandt},
+\newblock \bibinfo{title}{{A low Mach number diffuse-interface model for
+  multicomponent two-phase flows with phase change}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{523}
+  (\bibinfo{year}{2025}) \bibinfo{pages}{113683}.
+  \DOIprefix\doi{10.1016/j.jcp.2024.113683}.
+%Type = Article
+\bibitem[{Sussman et~al.(1994)Sussman, Smereka, and Osher}]{Sussman1994}
+\bibinfo{author}{M.~Sussman}, \bibinfo{author}{P.~Smereka},
+  \bibinfo{author}{S.~Osher},
+\newblock \bibinfo{title}{{A Level Set Approach for Computing Solutions to
+  Incompressible Two-Phase Flow}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{114}
+  (\bibinfo{year}{1994}) \bibinfo{pages}{146--159}.
+  \DOIprefix\doi{10.1006/jcph.1994.1155}.
+%Type = Article
+\bibitem[{Hua and Lou(2007)}]{Hua2007}
+\bibinfo{author}{J.~Hua}, \bibinfo{author}{J.~Lou},
+\newblock \bibinfo{title}{{Numerical simulation of bubble rising in viscous
+  liquid}},
+\newblock \bibinfo{journal}{J. Comput. Phys.} \bibinfo{volume}{222}
+  (\bibinfo{year}{2007}) \bibinfo{pages}{769--795}.
+  \DOIprefix\doi{10.1016/j.jcp.2006.08.008}.
+%Type = Article
+\bibitem[{Majd and Pouransari(2024)}]{Majd2024a}
+\bibinfo{author}{B.~K. Majd}, \bibinfo{author}{Z.~Pouransari},
+\newblock \bibinfo{title}{{Reynolds number effect on the Lagrangian evolution
+  of hairpin vortices in turbulent channel flow}},
+\newblock \bibinfo{journal}{J. Turbul.} \bibinfo{volume}{25}
+  (\bibinfo{year}{2024}) \bibinfo{pages}{207--224}.
+  \DOIprefix\doi{10.1080/14685248.2024.2363886}.
+%Type = Article
+\bibitem[{Sirovich(1987)}]{Sirovich1987}
+\bibinfo{author}{L.~Sirovich},
+\newblock \bibinfo{title}{{Turbulence and the dynamics of coherent structures.
+  I. Coherent structures}},
+\newblock \bibinfo{journal}{Q. Appl. Math.} \bibinfo{volume}{45}
+  (\bibinfo{year}{1987}) \bibinfo{pages}{561--571}.
+  \DOIprefix\doi{10.1090/qam/910462}.
+%Type = Article
+\bibitem[{Tu et~al.(2014)Tu, {W. Rowley}, {M. Luchtenburg}, {L. Brunton}, and
+  {Nathan Kutz}}]{H.Tu2014}
+\bibinfo{author}{J.~Tu}, \bibinfo{author}{C.~{W. Rowley}},
+  \bibinfo{author}{D.~{M. Luchtenburg}}, \bibinfo{author}{S.~{L. Brunton}},
+  \bibinfo{author}{J.~{Nathan Kutz}},
+\newblock \bibinfo{title}{{On dynamic mode decomposition: Theory and
+  applications}},
+\newblock \bibinfo{journal}{J. Comput. Dyn.} \bibinfo{volume}{1}
+  (\bibinfo{year}{2014}) \bibinfo{pages}{391--421}.
+  \DOIprefix\doi{10.3934/jcd.2014.1.391}.
+%Type = Book
+\bibitem[{Kutz et~al.(2016)Kutz, Brunton, Brunton, and Proctor}]{Kutz2016}
+\bibinfo{author}{J.~N. Kutz}, \bibinfo{author}{S.~L. Brunton},
+  \bibinfo{author}{B.~W. Brunton}, \bibinfo{author}{J.~L. Proctor},
+  \bibinfo{title}{{Dynamic mode decomposition}}, \bibinfo{publisher}{Society
+  for Industrial and Applied Mathematics}, \bibinfo{address}{Philadelphia, PA},
+  \bibinfo{year}{2016}. \DOIprefix\doi{10.1137/1.9781611974508}.
+%Type = Article
+\bibitem[{Jovanovi{\'{c}} et~al.(2014)Jovanovi{\'{c}}, Schmid, and
+  Nichols}]{Jovanovic2014}
+\bibinfo{author}{M.~R. Jovanovi{\'{c}}}, \bibinfo{author}{P.~J. Schmid},
+  \bibinfo{author}{J.~W. Nichols},
+\newblock \bibinfo{title}{{Sparsity-promoting dynamic mode decomposition}},
+\newblock \bibinfo{journal}{Phys. Fluids} \bibinfo{volume}{26}
+  (\bibinfo{year}{2014}) \bibinfo{pages}{024103}.
+  \DOIprefix\doi{10.1063/1.4863670}.
+%Type = Incollection
+\bibitem[{Schmid(2023)}]{Schmid2023}
+\bibinfo{author}{P.~J. Schmid},
+\newblock \bibinfo{title}{{The Dynamic Mode Decomposition: From Koopman theory
+  to applications}},
+\newblock in: \bibinfo{booktitle}{Data-Driven Fluid Mech.},
+  \bibinfo{publisher}{Cambridge University Press}, \bibinfo{year}{2023}, pp.
+  \bibinfo{pages}{133--152}. \DOIprefix\doi{10.1017/9781108896214.012}.
+%Type = Article
+\bibitem[{Hysing et~al.(2009)Hysing, Turek, Kuzmin, Parolini, Burman, Ganesan,
+  and Tobiska}]{Hysing2009}
+\bibinfo{author}{S.~Hysing}, \bibinfo{author}{S.~Turek},
+  \bibinfo{author}{D.~Kuzmin}, \bibinfo{author}{N.~Parolini},
+  \bibinfo{author}{E.~Burman}, \bibinfo{author}{S.~Ganesan},
+  \bibinfo{author}{L.~Tobiska},
+\newblock \bibinfo{title}{{Quantitative benchmark computations of
+  two‐dimensional bubble dynamics}},
+\newblock \bibinfo{journal}{Int. J. Numer. Methods Fluids} \bibinfo{volume}{60}
+  (\bibinfo{year}{2009}) \bibinfo{pages}{1259--1288}.
+  \DOIprefix\doi{10.1002/fld.1934}.
+%Type = Article
+\bibitem[{Haller and Sapsis(2011)}]{Haller2011}
+\bibinfo{author}{G.~Haller}, \bibinfo{author}{T.~Sapsis},
+\newblock \bibinfo{title}{{Lagrangian coherent structures and the smallest
+  finite-time Lyapunov exponent}},
+\newblock \bibinfo{journal}{Chaos An Interdiscip. J. Nonlinear Sci.}
+  \bibinfo{volume}{21} (\bibinfo{year}{2011}) \bibinfo{pages}{023115}.
+  \DOIprefix\doi{10.1063/1.3579597}.
+
+\end{thebibliography}
